@@ -35,9 +35,10 @@ Theater t = new Theater(
   
 ## Additional Information:
 - CLASSES: 
-   - `OrderProcessor()` : when tickets purchased a theater event signals the order processor to confirm purchase and check if seat has been taken. Purchases are NOT made here but in the Theater class.
+   - `OrderProcessor()` : when tickets purchased a theater event signals the order processor to confirm purchase and check if seat has been taken. Purchases are NOT made here but in the Kiosk class.
    - `Section()` : a movie theater has multiple sections on where to sit. Some in the front,back,right,left,balcony,etc. 
-   - `Theater()` : is the movie theater. Tickets are purchased here.
+   - `Theater()` : is the movie with seats.
+   - `Kiosk()`   : is where the customer buys a ticket.
 
 - ENUMS:
    - `Location` : used in the Section class. A theater has many sections in which a person can choose to sit. This enum was made such that it can be used in different theater settings such as a Broadway show or Imax theater.
