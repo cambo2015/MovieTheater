@@ -16,9 +16,11 @@ namespace Dcoder
            WriteLine(op);
         	
             Section s1 = new Section(5,6,Location.Front);
+            Section s2 = new Section(5,6,Location.Back);
             var sections = new List<Section>
             {
             	s1,
+            	s2
             };
             
             Theater t = new Theater(
@@ -32,14 +34,14 @@ namespace Dcoder
             	col:5
             	);
         
-        	t.SecureSeat(//ordering a seat that is take->SEAT ALREADY TAKEN
+        	t.SecureSeat(//ordering a seat that is taken->SEAT ALREADY TAKEN
             	section:0,
             	row:3,
             	col:5
             	);
             	
-            s1.Show();
-            
+            //s1.Show();
+            t.ShowAllSeats();
             	
              
              
@@ -109,6 +111,8 @@ namespace Dcoder
         
         public void Show()
         {
+        	WriteLine();
+        	WriteLine(location.ToString("g"));
             for(int i = 0;i<rows;i++)
             {
                 for(int j = 0;j<cols;j++)
@@ -120,6 +124,7 @@ namespace Dcoder
                     Write("["+seats[i,j].Available +"]");
                 }
             }
+            WriteLine();
         }
     }
     
@@ -167,6 +172,13 @@ namespace Dcoder
         	{
         		WriteLine("No Subscribers. Event not fired");
         	}
+        }
+        
+        public void ShowAllSeats()
+        {
+        	WriteLine();
+        	sections.ForEach(x=>x.Show());
+        	WriteLine();
         }
     }
     
