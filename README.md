@@ -3,7 +3,7 @@ Order Movie Tickets Simulation
 ```
 var op = new OrderProcessor();
 Section section = new Section(rows,cols,Location.Front);//Location is an enum
-List<Section> sections = new List<int>{
+List<Section> sections = new List<Section>{
   section,
   };
 Theater t = new Theater(sections,name:"A");
