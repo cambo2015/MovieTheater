@@ -1,12 +1,14 @@
 # MovieTheater
 Order Movie Tickets Simulation
-* var op = new OrderProcessor();
-* Section section = new Section(rows,cols,Location.Front);//Location is an enum
-* List<Section> sections = new List<int>{
+```
+var op = new OrderProcessor();
+Section section = new Section(rows,cols,Location.Front);//Location is an enum
+List<Section> sections = new List<int>{
   section,
   };
-* Theater t = new Theater(sections,name:"A");
-* t.SecureSeat(section:0,row:3,col:5);
+Theater t = new Theater(sections,name:"A");
+t.SecureSeat(section:0,row:3,col:5);
+```
   
 ## Additional Information:
 * classes: 
