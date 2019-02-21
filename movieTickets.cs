@@ -25,10 +25,41 @@ namespace Dcoder
             
             Theater t = new Theater(
             	sections,
-            	name:"A1"
+            	name:"A1",
+            	startTime:new DateTime(
+            		year:DateTime.Now.Year,
+            		month:12,
+            		day:1,
+            		hour:5,
+            		minute:0,
+            		second:0),
+            	title:"That One Movie Title"
             	);
             	
-            t.SecureSeat(
+            var kiosk = new Kiosk(
+            	theaters: new List<Theater>{
+            		t
+            });
+            
+            kiosk.OrderTicket(new CustomerOrder{
+            	Title = "That One Movie Title",
+            	MovieTime = new DateTime(DateTime.Now.Year,12,1,5,0,0),
+            	Section = 0,
+            	Row = 3,
+            	Col = 2
+            });
+            
+            kiosk.OrderTicket(new CustomerOrder{
+            	Title = "That One Movie Title",
+            	MovieTime = new DateTime(DateTime.Now.Year,12,1,5,0,0),
+            	Section = 0,
+            	Row = 3,
+            	Col = 2
+            });
+            
+            	
+            
+            /*t.SecureSeat(
             	section:0,
             	row:3,
             	col:5
@@ -38,16 +69,77 @@ namespace Dcoder
             	section:0,
             	row:3,
             	col:5
-            	);
+            	);*/
             	
-            //s1.Show();
-            t.ShowAllSeats();
-            	
-             
-             
-            
+            //s1.Show();//DO NOT USE
+            t.ShowAllSeats();//USE THIS INSTEAD
         }
     }
+    
+    public struct CustomerOrder
+    {
+    	public string Title
+    	{
+    		 get;set;
+    	}
+    	public DateTime MovieTime
+    	{
+    		 get;set;
+    	}
+    	public int Section
+    	{
+    		get;set;
+    	}
+    	
+    	public int Row
+    	{
+    		get;set;
+    	}
+    	public int Col
+    	{
+    		get;set;
+    	}
+    	
+    	public float RewardsPoints{
+    		 get;set;
+    	}
+    	
+    	public float GiftCardAmount{
+    		 get;set;
+    	}
+    	
+    	public int Age{
+    		get;set;
+    	}
+    }
+    
+    
+    public class Kiosk
+    {
+    	public static double AdmissionPrice{get;set;} = 12.99;
+    	List<Theater> Theaters{
+    		get; set;
+    	}
+    	
+    	public Kiosk(List<Theater> theaters)
+    	{
+    		
+    		Theaters = theaters;
+    	}
+    	
+    	public void OrderTicket(CustomerOrder custOrder)
+    	{
+    		List<Theater> t = Theaters.Where(x=> x.Title == custOrder.Title && x.StartTime == custOrder.MovieTime ).ToList();
+    		t.ForEach(x=>WriteLine(x));
+    		if(t != null)
+    		{
+    			t[0].SecureSeat(section:custOrder.Section,row:custOrder.Row,col:custOrder.Col);
+    		} 			
+    	}
+    	
+    	
+    }
+    
     
     public class OrderProcessor
     {
@@ -134,14 +226,23 @@ namespace Dcoder
     	public delegate void SeatOrderedEventHandler(object sender,SeatEventArgs e);
     	public static event SeatOrderedEventHandler MyEvent; 
     
-    	 public string Name{
+    	 public string TheaterName{
+     		get;set;
+     	}
+     	public string Title{
+     		get;set;
+     	}
+     	
+     	public DateTime StartTime{
      		get;set;
      	}
         private List<Section> sections;
-        public Theater(List<Section> sections,string name)
+        public Theater(List<Section> sections,string name,DateTime startTime,string title)
         {
             this.sections = sections;
-            Name = name;
+            TheaterName = name;
+            StartTime = startTime;
+            Title = title;
         }
         
         public void SecureSeat(int section,int row,int col)
@@ -189,4 +290,5 @@ namespace Dcoder
     	}
     }
 }
+    
     
