@@ -6,8 +6,31 @@ Section section = new Section(rows:10,cols:5,Location.Front);//Location is an en
 List<Section> sections = new List<Section>{
   section,
   };
-Theater t = new Theater(sections,name:"A");
-t.SecureSeat(section:0,row:3,col:5);
+Theater t = new Theater(
+            	sections,
+            	name:"A1",
+            	startTime:new DateTime(
+            		year:DateTime.Now.Year,
+            		month:12,
+            		day:1,
+            		hour:5,
+            		minute:0,
+            		second:0),
+            	title:"That One Movie Title"
+            	);
+            	
+            var kiosk = new Kiosk(
+            	theaters: new List<Theater>{
+            		t
+            });
+            
+            kiosk.OrderTicket(new CustomerOrder{
+            	Title = "That One Movie Title",
+            	MovieTime = new DateTime(DateTime.Now.Year,12,1,5,0,0),
+            	Section = 0,
+            	Row = 3,
+            	Col = 2
+            });
 ```
   
 ## Additional Information:
