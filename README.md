@@ -2,7 +2,7 @@
 Order Tickets Simulation
 ```
 var op = new OrderProcessor();
-Section section = new Section(rows,cols,Location.Front);//Location is an enum
+Section section = new Section(rows:10,cols:5,Location.Front);//Location is an enum
 List<Section> sections = new List<Section>{
   section,
   };
