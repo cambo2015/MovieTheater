@@ -1,5 +1,5 @@
 # MovieTheater
-Order Movie Tickets Simulation
+Order Tickets Simulation
 ```
 var op = new OrderProcessor();
 Section section = new Section(rows,cols,Location.Front);//Location is an enum
@@ -17,12 +17,15 @@ t.SecureSeat(section:0,row:3,col:5);
    - `Theater()` : is the movie theater. Tickets are purchased here.
 
 - ENUMS:
-   - `Location` : used in the Section class. A theater has many sections in which a person can choose to sit. 
+   - `Location` : used in the Section class. A theater has many sections in which a person can choose to sit. This enum was made such that it can be used in different theater settings such as a Broadway show or Imax theater.
        - `Left`,
        - `Right`,
        - `Front`,
-       - `Back`.
-       * This enum was created for multiple use cases:IMAX,OPERA THEATER,BROADWAY. 
+       - `Back`, 
 
+
+### To be added
+
+ - [ ] specify movie times and what time ticket was ordered
 
  
